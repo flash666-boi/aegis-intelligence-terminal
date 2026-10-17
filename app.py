@@ -877,45 +877,80 @@ elif page == "Geopolitics":
 # Page: Cyber Lab
 # --------------------------------------------------------------------------- #
 elif page == "Cyber Lab":
-    st.title("🛡️ Cybersecurity Research Lab")
-    st.markdown("A defensive, educational library of major incidents. Case studies focus on "
-                "impact, root causes, detection, response, and lessons — not reusable intrusion instructions.")
-    cases = json.loads(CASES_PATH.read_text(encoding="utf-8")) if CASES_PATH.exists() else []
-    c1, c2 = st.columns([1, 2])
-    with c1:
-        search = st.text_input("Find an incident", placeholder="e.g., SolarWinds, WannaCry")
-    with c2:
-        year_opts = ["All"] + sorted({str(c.get("year", "Unknown")) for c in cases}, reverse=True)
-        selected_year = st.selectbox("Year", year_opts)
-    filtered = cases
-    if search:
-        filtered = [c for c in filtered if search.lower() in (
-            c.get("name", "") + " " + c.get("summary", "") + " " + c.get("sector", "")).lower()]
-    if selected_year != "All":
-        filtered = [c for c in filtered if str(c.get("year")) == selected_year]
-    st.caption(f"{len(filtered)} case studies shown · {len(cases)} total in local library")
-    for case in filtered:
-        with st.expander(f"{case['year']} · {case['name']} — {case['sector']}"):
-            st.markdown(f"**What happened:** {case['summary']}")
-            st.markdown(f"**What made it notable:** {case['notable']}")
-            st.markdown(f"**Defensive lessons:** {case['lessons']}")
-            st.markdown(f"**Research starting point:** [{case['source_label']}]({case['source']})")
-            st.caption("Details and attribution may evolve as investigations are updated. Confirm "
-                       "technical claims with primary incident reports.")
-    st.divider()
-    st.subheader("Study path")
-    st.markdown("""
-    1. **Networking fundamentals** — TCP/IP, DNS, HTTP(S), routing, TLS.
-    2. **Operating systems and identity** — Linux, Windows logs, permissions, authentication.
-    3. **Secure coding and vulnerability classes** — OWASP Top 10, patch management, threat modeling.
-    4. **Defensive operations** — SIEM queries, endpoint telemetry, backups, incident response, threat hunting.
-    5. **Safe practice** — CTFs and intentionally vulnerable labs you own or are authorized to test.
-    6. **Research** — compare vendor write-ups, advisories, CVE records, post-incident reviews, and peer-reviewed work.
-    """)
-    st.warning("Only test systems you own or have explicit permission to assess. This library "
-               "intentionally avoids exploit payloads, persistence steps, credential theft "
-               "instructions, and target-selection guidance.")
-
+    CASE_TARGET = 300
+    CASES_PER_PAGE = 25
+ 
+    # ----- Local helpers (scoped to this page only) -----
+    def _as_list(value):
+        if not value:
+            return []
+        if isinstance(value, (list, tuple)):
+            return list(value)
+        return [value]
+ 
+    def _timeline_line(item):
+        if isinstance(item, dict):
+            when = str(item.get("date") or item.get("when") or "").strip()
+            what = str(item.get("event") or item.get("what") or "").strip()
+            return f"**{when}** — {what}" if when else what
+        return str(item)
+ 
+    def _case_haystack(case):
+        parts = [str(case.get(k, "")) for k in
+                 ("name", "summary", "sector", "attack_type", "notable", "lessons")]
+        for k in ("root_causes", "root_cause", "vulnerabilities"):
+            parts.extend(str(x) for x in _as_list(case.get(k)))
+        return " ".join(parts).lower()
+ 
+    def _render_case(case):
+        year = case.get("year", "Unknown")
+        name = case.get("name", "Untitled incident")
+        sector = case.get("sector", "Unspecified sector")
+        with st.expander(f"{year} · {name} — {sector}"):
+            if case.get("attack_type"):
+                st.caption(f"Attack type: {case['attack_type']}")
+            if case.get("summary"):
+                st.markdown(f"**What happened:** {case['summary']}")
+ 
+            timeline = _as_list(case.get("timeline"))
+            if timeline:
+                st.markdown("**Attack timeline**")
+                for item in timeline:
+                    st.markdown(f"- {_timeline_line(item)}")
+ 
+            root = _as_list(case.get("root_causes") or case.get("root_cause"))
+            if root:
+                st.markdown("**Root causes**")
+                for item in root:
+                    st.markdown(f"- {item}")
+ 
+            vulns = _as_list(case.get("vulnerabilities"))
+            if vulns:
+                st.markdown("**Exploited vulnerabilities / weaknesses**")
+                for item in vulns:
+                    st.markdown(f"- {item}")
+ 
+            if case.get("notable"):
+                st.markdown(f"**What made it notable:** {case['notable']}")
+ 
+            lessons = _as_list(case.get("lessons"))
+            if len(lessons) > 1:
+                st.markdown("**Defensive lessons**")
+                for item in lessons:
+                    st.markdown(f"- {item}")
+            elif lessons:
+                st.markdown(f"**Defensive lessons:** {lessons[0]}")
+ 
+            if not (timeline or root or vulns):
+                st.caption("Detailed timeline, root-cause, and vulnerability fields have "
+                           "not been added for this case yet.")
+ 
+            src = str(case.get("source", ""))
+            if safe_link(src):
+                label = case.get("source_label") or "Source"
+                st.markdown(f"**Research starting point:** [{label}]({src})")
+            st.caption("Details and attribution may evolve as investigations are updated. "
+                       "Confirm technical claims with primary incident reports.")
 # --------------------------------------------------------------------------- #
 # Page: Global News
 # --------------------------------------------------------------------------- #
