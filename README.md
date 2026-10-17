@@ -1,4 +1,5 @@
 # Aegis — Global Intelligence Terminal
+!!APP is live on- https://aegis-intel-news.streamlit.app/
 
 A runnable Python + Streamlit research dashboard for public-source news
 monitoring, geopolitical reading, cybersecurity incident education, daily
