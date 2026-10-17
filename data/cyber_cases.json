@@ -1,0 +1,392 @@
+[
+  {
+    "year": 1988,
+    "name": "Morris Worm",
+    "sector": "Internet / Academia",
+    "attack_type": "Worm",
+    "summary": "One of the first internet worms spread across Unix systems and slowed or crashed a large share of the early internet.",
+    "timeline": [
+      "Nov 1988: released from a university network",
+      "Spread rapidly by re-infecting machines repeatedly",
+      "Admins disconnected networks while a fix was worked out",
+      "Author later convicted under the US Computer Fraud and Abuse Act"
+    ],
+    "root_causes": [
+      "Known software flaws left unpatched",
+      "Weak and guessable passwords",
+      "Trust relationships between machines"
+    ],
+    "vulnerabilities": [
+      "Memory-handling flaw in a network service",
+      "Debug feature in a mail service",
+      "Weak passwords"
+    ],
+    "notable": "Led to the creation of the first Computer Emergency Response Team (CERT/CC).",
+    "lessons": [
+      "Patch known flaws promptly",
+      "Use strong authentication",
+      "Have a coordinated incident-response contact"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Morris_worm"
+  },
+  {
+    "year": 2010,
+    "name": "Stuxnet",
+    "sector": "Industrial / Nuclear",
+    "attack_type": "ICS-targeted malware",
+    "summary": "Sophisticated malware that targeted specific industrial controllers and caused physical damage to centrifuges.",
+    "timeline": [
+      "2009-2010: spread via removable media and Windows flaws",
+      "Jun 2010: first publicly identified by a security firm",
+      "Analysis revealed targeting of specific Siemens control software"
+    ],
+    "root_causes": [
+      "Reliance on air-gapping alone",
+      "Unmonitored removable media",
+      "Trust in signed code"
+    ],
+    "vulnerabilities": [
+      "Multiple Windows zero-day flaws",
+      "Stolen code-signing certificates",
+      "Industrial controller software weaknesses"
+    ],
+    "notable": "First widely documented cyberweapon causing physical damage; widely attributed to nation-state actors.",
+    "lessons": [
+      "Air gaps are not enough",
+      "Control removable media",
+      "Monitor industrial network behaviour"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Stuxnet"
+  },
+  {
+    "year": 2013,
+    "name": "Target Data Breach",
+    "sector": "Retail",
+    "attack_type": "Third-party compromise / POS malware",
+    "summary": "Attackers entered through credentials of a vendor and later installed malware on payment systems.",
+    "timeline": [
+      "Nov 2013: vendor credentials used to access the network",
+      "Malware deployed on point-of-sale systems",
+      "Dec 2013: breach disclosed; tens of millions of cards and records reported affected"
+    ],
+    "root_causes": [
+      "Vendor access not tightly segmented from payment systems",
+      "Security alerts not acted on in time"
+    ],
+    "vulnerabilities": [
+      "Compromised third-party credentials",
+      "Flat internal network"
+    ],
+    "notable": "Showed how a small supplier can be the path into a large enterprise.",
+    "lessons": [
+      "Segment vendor access",
+      "Act on high-severity alerts",
+      "Apply least privilege to third parties"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/2013_Target_data_breach"
+  },
+  {
+    "year": 2014,
+    "name": "Sony Pictures Hack",
+    "sector": "Entertainment",
+    "attack_type": "Destructive attack / data leak",
+    "summary": "Attackers stole and leaked internal data and wiped systems at a major studio.",
+    "timeline": [
+      "Nov 2014: systems disabled and data leaked",
+      "Internal emails, films and personal data published",
+      "US government publicly attributed it to North Korea"
+    ],
+    "root_causes": [
+      "Insufficient network segmentation",
+      "Weak internal monitoring"
+    ],
+    "vulnerabilities": [
+      "Compromised credentials and internal access",
+      "Wiper malware deployed widely"
+    ],
+    "notable": "Early high-profile destructive attack on a private company.",
+    "lessons": [
+      "Maintain offline backups",
+      "Segment networks",
+      "Plan for data-leak crisis communications"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Sony_Pictures_hack"
+  },
+  {
+    "year": 2016,
+    "name": "Bangladesh Bank Heist",
+    "sector": "Banking",
+    "attack_type": "Payment-network fraud",
+    "summary": "Fraudulent SWIFT payment messages attempted to move close to a billion dollars; about 81 million USD was lost.",
+    "timeline": [
+      "Feb 2016: fraudulent transfer requests sent",
+      "Several payments processed; others blocked",
+      "A spelling error in one request raised suspicion at an intermediary"
+    ],
+    "root_causes": [
+      "Weak security around payment-messaging systems",
+      "Limited monitoring and controls at the bank"
+    ],
+    "vulnerabilities": [
+      "Compromised bank systems used for SWIFT access"
+    ],
+    "notable": "Prompted stronger security requirements across the SWIFT network.",
+    "lessons": [
+      "Isolate and monitor payment systems",
+      "Add out-of-band transaction verification"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Bangladesh_Bank_robbery"
+  },
+  {
+    "year": 2016,
+    "name": "Mirai Botnet and Dyn DDoS",
+    "sector": "Internet infrastructure / IoT",
+    "attack_type": "Botnet / DDoS",
+    "summary": "A botnet of insecure connected devices flooded a major DNS provider, disrupting many popular sites.",
+    "timeline": [
+      "Aug-Sep 2016: Mirai botnet grows",
+      "Oct 21 2016: large DDoS on Dyn DNS",
+      "Many well-known sites became unreachable for hours"
+    ],
+    "root_causes": [
+      "Devices shipped with default passwords",
+      "Users rarely change IoT credentials"
+    ],
+    "vulnerabilities": [
+      "Default credentials on cameras and routers"
+    ],
+    "notable": "Showed IoT devices could be weaponised at scale.",
+    "lessons": [
+      "Ban default passwords",
+      "Update IoT firmware",
+      "Use DNS redundancy"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Mirai_(malware)"
+  },
+  {
+    "year": 2017,
+    "name": "Equifax Data Breach",
+    "sector": "Financial / Credit reporting",
+    "attack_type": "Web application exploitation",
+    "summary": "Attackers exploited an unpatched web framework flaw and exposed personal data of roughly 147 million people.",
+    "timeline": [
+      "Mar 2017: patch for the flaw released",
+      "May-Jul 2017: attackers access systems",
+      "Sep 2017: breach publicly disclosed"
+    ],
+    "root_causes": [
+      "Patch not applied in time",
+      "Incomplete asset inventory",
+      "Expired certificate on a monitoring tool delayed detection"
+    ],
+    "vulnerabilities": [
+      "Apache Struts flaw (CVE-2017-5638)"
+    ],
+    "notable": "A leading example of the cost of poor patch management.",
+    "lessons": [
+      "Maintain asset inventory",
+      "Patch critical flaws fast",
+      "Keep monitoring tools working"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/2017_Equifax_data_breach"
+  },
+  {
+    "year": 2017,
+    "name": "WannaCry",
+    "sector": "Healthcare / Cross-sector",
+    "attack_type": "Ransomware worm",
+    "summary": "A self-spreading ransomware outbreak hit organisations worldwide, including parts of the UK health service.",
+    "timeline": [
+      "Mar 2017: vendor patch released",
+      "May 12 2017: outbreak begins",
+      "Kill-switch domain registered, slowing spread"
+    ],
+    "root_causes": [
+      "Unpatched and unsupported Windows systems",
+      "Exposed legacy file-sharing service"
+    ],
+    "vulnerabilities": [
+      "SMBv1 flaw (MS17-010)"
+    ],
+    "notable": "Showed ransomware could spread like a worm.",
+    "lessons": [
+      "Patch quickly",
+      "Retire unsupported systems",
+      "Disable legacy protocols",
+      "Keep tested backups"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/WannaCry_ransomware_attack"
+  },
+  {
+    "year": 2017,
+    "name": "NotPetya",
+    "sector": "Cross-sector / Logistics",
+    "attack_type": "Destructive wiper via supply chain",
+    "summary": "Malware pushed through a compromised Ukrainian accounting-software update spread globally and caused billions in losses.",
+    "timeline": [
+      "Jun 27 2017: malicious update delivered",
+      "Rapid spread across networks",
+      "Major firms halted operations"
+    ],
+    "root_causes": [
+      "Trusted update channel compromised",
+      "Flat networks allowed rapid spread"
+    ],
+    "vulnerabilities": [
+      "Compromised software update",
+      "Windows file-sharing flaw",
+      "Credential reuse"
+    ],
+    "notable": "One of the most costly cyber incidents on record; attributed by governments to a state actor.",
+    "lessons": [
+      "Segment networks",
+      "Vet vendor update mechanisms",
+      "Keep offline backups"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Petya_(malware_family)"
+  },
+  {
+    "year": 2020,
+    "name": "SolarWinds Orion Supply-Chain Compromise",
+    "sector": "Government / Technology",
+    "attack_type": "Software supply-chain attack",
+    "summary": "A backdoor was inserted into signed software updates and delivered to thousands of customers.",
+    "timeline": [
+      "Early 2020: build environment compromised",
+      "Mar-Jun 2020: tainted updates distributed",
+      "Dec 2020: discovered by a security firm"
+    ],
+    "root_causes": [
+      "Build pipeline not sufficiently protected",
+      "Trusted vendor updates installed without behavioural scrutiny"
+    ],
+    "vulnerabilities": [
+      "Compromised build process",
+      "Abuse of trusted software updates"
+    ],
+    "notable": "Reshaped thinking on supply-chain security and led to new US policy.",
+    "lessons": [
+      "Harden build systems",
+      "Monitor behaviour of trusted software",
+      "Maintain SBOMs"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/2020_United_States_federal_government_data_breach"
+  },
+  {
+    "year": 2021,
+    "name": "Colonial Pipeline Ransomware",
+    "sector": "Energy",
+    "attack_type": "Ransomware",
+    "summary": "Ransomware led a major fuel pipeline operator to pause operations, causing shortages in parts of the US.",
+    "timeline": [
+      "May 2021: ransomware hits business IT systems",
+      "Operator proactively halts pipeline",
+      "Ransom paid; authorities later recovered part of it"
+    ],
+    "root_causes": [
+      "Remote access account without multi-factor authentication",
+      "Inactive account still enabled"
+    ],
+    "vulnerabilities": [
+      "Compromised VPN credentials"
+    ],
+    "notable": "Highlighted how IT compromise can disrupt physical infrastructure.",
+    "lessons": [
+      "Enforce MFA on remote access",
+      "Remove unused accounts",
+      "Separate IT and operational networks"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Colonial_Pipeline_ransomware_attack"
+  },
+  {
+    "year": 2021,
+    "name": "Kaseya VSA Ransomware",
+    "sector": "IT services / MSP",
+    "attack_type": "Supply-chain ransomware",
+    "summary": "Attackers exploited remote-management software to push ransomware to many downstream businesses.",
+    "timeline": [
+      "Jul 2 2021: attack launched before a holiday weekend",
+      "Managed-service providers and their clients affected",
+      "Vendor shut down services and issued fixes"
+    ],
+    "root_causes": [
+      "Vulnerabilities in management software",
+      "MSP tooling grants broad access"
+    ],
+    "vulnerabilities": [
+      "Authentication-bypass type flaws in remote management product"
+    ],
+    "notable": "Showed how compromising one provider can hit many customers.",
+    "lessons": [
+      "Limit privileges of management tools",
+      "Patch vendor software promptly",
+      "Plan for provider outages"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Kaseya_VSA_ransomware_attack"
+  },
+  {
+    "year": 2021,
+    "name": "Log4Shell",
+    "sector": "Cross-sector / Software",
+    "attack_type": "Critical library vulnerability",
+    "summary": "A severe flaw in a ubiquitous Java logging library enabled remote code execution across countless products.",
+    "timeline": [
+      "Dec 2021: flaw publicly disclosed",
+      "Mass scanning and exploitation began within days",
+      "Vendors rushed patches and mitigations"
+    ],
+    "root_causes": [
+      "Widespread use of a library without knowing where it is deployed"
+    ],
+    "vulnerabilities": [
+      "Apache Log4j flaw (CVE-2021-44228)"
+    ],
+    "notable": "Exposed how hard it is to find hidden dependencies.",
+    "lessons": [
+      "Keep software inventories (SBOMs)",
+      "Track dependencies",
+      "Have a rapid-patch process"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/Log4Shell"
+  },
+  {
+    "year": 2023,
+    "name": "MOVEit Transfer Mass Data Theft",
+    "sector": "Cross-sector",
+    "attack_type": "Zero-day exploitation / data theft",
+    "summary": "A zero-day in a managed file-transfer product was exploited to steal data from many organisations.",
+    "timeline": [
+      "May 2023: exploitation of the flaw begins",
+      "Vendor patches after discovery",
+      "Victims disclosed over following months"
+    ],
+    "root_causes": [
+      "Internet-exposed file-transfer software",
+      "Sensitive data concentrated in one product"
+    ],
+    "vulnerabilities": [
+      "SQL injection flaw in MOVEit Transfer (CVE-2023-34362)"
+    ],
+    "notable": "Demonstrated large-scale data-theft campaigns without encryption.",
+    "lessons": [
+      "Minimise internet-exposed services",
+      "Limit data retention",
+      "Monitor for unusual data egress"
+    ],
+    "source_label": "Wikipedia overview (starting point; confirm with primary reports)",
+    "source": "https://en.wikipedia.org/wiki/MOVEit"
+  }
+]
